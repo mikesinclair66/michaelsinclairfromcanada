@@ -1,24 +1,34 @@
 import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DefaultPage from './views/DefaultPage';
+import Home from './views/Home';
+import Roadmap from './views/Roadmap';
+import Designs from './views/Designs';
+import Developments from './views/Developments';
+import Contact from './views/Contact';
+import SignUp from './views/SignUp';
+import NotFound from './views/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<DefaultPage />}>
+                    <Route index element={<Home />} />
+                    <Route path="roadmap" element={<Roadmap />} />
+                    <Route path="designs" element={<Designs />} />
+                    <Route path="developments" element={<Developments />} />
+                    <Route path="contact" element={<Contact />} />
+                    <Route path="sign-up" element={<SignUp />} />
+                    <Route path="*" element={<NotFound />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    </>
   );
 }
 
